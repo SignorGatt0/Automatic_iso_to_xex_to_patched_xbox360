@@ -27,7 +27,7 @@ def first_option() -> str:
     """
 
     # promt for selecting a folder for the ISOs
-    input_folder: str = chose_folder()
+    input_folder:str = chose_folder()
 
     # update the interface to display that a folder has been chosen
     iso_path = True
@@ -63,14 +63,13 @@ def third_option():
         return
     
 
-
 def chose_folder() -> str:
     """
     Function that ask to the user a file path to use,
     the function return the where the file is
     """
 
-    path: str = askdirectory(title="select a directory")
+    path:str = askdirectory(title="select a directory")
     return path
 
 # application main loop
@@ -109,5 +108,16 @@ while reload:
     )
     # 3
     print(f"3 |{ready_output}| START AUTOMATIC PROCESS")
+
+    choice = int(input("..."))
+
+    input_folder = first_option()
+    match choice:
+        case 1:
+            input_folder = first_option()
+        case 2:
+            extract_folder = second_option()
+        case 3:
+            third_option()
 
 
