@@ -1,14 +1,17 @@
 from art import text2art
 from termcolor import colored
 
+from steps import step1
+
 import os
 from sys import platform
 
-if platform == "linux":
-    clear = "clear"   
-elif platform == "win32":
-    clear = "cls"
-    
+if platform == "win32":
+    clear = "cls"   
+else:
+    clear = "clear"
+
+
 os.system(clear)
 
 # setup for the start of the application
@@ -31,7 +34,7 @@ def chose_folder() -> str:
     return path
 
 
-def first_option() -> str:
+def option1() -> str:
     global iso_path
 
     """
@@ -50,7 +53,7 @@ def first_option() -> str:
     return input_folder
 
 
-def second_option()-> str:
+def option2()-> str:
     global extract_path
 
     """
@@ -70,11 +73,10 @@ def second_option()-> str:
     return extract_folder
 
 
-def third_option():
+def option3():
     # check if the input and the output folder are chosed
     if iso_path and extract_path:
-        # start
-        pass
+        step1()
     elif not iso_path or not extract_path:
         # stop the start from the missing requirement 
         print(colored('ERROR THE ISO OR THE OUTPUT DIRECTORY HAS NOT BEEN CHOSED','red'))
@@ -130,13 +132,13 @@ while reload:
     choice = int(input("... "))
     match choice:
         case 1:
-            input_folder = first_option()
+            input_folder = option1()
             
         case 2:
-            extract_folder = second_option()
+            extract_folder = option2()
             
         case 3:
-            third_option()
+            option3()
     os.system(clear)
 
 

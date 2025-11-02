@@ -1,0 +1,4 @@
+0 optional )extract .zip --> directory
+1)extract .iso --> .xex
+2)patch all .xex
+
